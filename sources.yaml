@@ -1,0 +1,146 @@
+# ---------------------------------------------------------------------------
+# sources.yaml — where the agent looks.
+#
+# Slugs below are a seed list built from public ATS patterns. Companies change
+# ATS providers, so some entries WILL be wrong on day one. That is expected and
+# handled: run `python agent.py --check-sources` and it prints a pass/fail table.
+# Send me the failures and I'll fix them, or run `--discover "Company Name"` and
+# the agent will find the right endpoint itself.
+#
+# Adding a company later: run --discover, paste the line it gives you.
+# ---------------------------------------------------------------------------
+
+# --- Greenhouse: https://boards-api.greenhouse.io/v1/boards/{slug}/jobs
+greenhouse:
+  - { company: Stripe,            slug: stripe }
+  - { company: Databricks,        slug: databricks }
+  - { company: Figma,             slug: figma }
+  - { company: Cloudflare,        slug: cloudflare }
+  - { company: MongoDB,           slug: mongodb }
+  - { company: Confluent,         slug: confluent }
+  - { company: Twilio,            slug: twilio }
+  - { company: Airbnb,            slug: airbnb }
+  - { company: Coinbase,          slug: coinbase }
+  - { company: Reddit,            slug: reddit }
+  - { company: Pinterest,         slug: pinterest }
+  - { company: Robinhood,         slug: robinhood }
+  - { company: Affirm,            slug: affirm }
+  - { company: GitLab,            slug: gitlab }
+  - { company: HashiCorp,         slug: hashicorp }
+  - { company: Snyk,              slug: snyk }
+  - { company: Samsara,           slug: samsara }
+  - { company: DoorDash,          slug: doordash }
+  - { company: Discord,           slug: discord }
+  - { company: Dropbox,           slug: dropbox }
+  - { company: Anthropic,         slug: anthropic }
+  - { company: Adyen,             slug: adyen }
+  - { company: Wise,              slug: wise }
+  - { company: Grab,              slug: grab }
+  - { company: Canva,             slug: canva }
+  - { company: Atlassian,         slug: atlassian }
+  - { company: Snowflake,         slug: snowflakecomputing }
+  - { company: Datadog,           slug: datadog }
+  - { company: Elastic,           slug: elastic }
+  - { company: Rippling,          slug: rippling }
+  - { company: Nium,              slug: nium }
+  - { company: Thunes,            slug: thunes }
+  - { company: Carousell,         slug: carousell }
+  - { company: Coda Payments,     slug: codapayments }
+  - { company: Ninja Van,         slug: ninjavan }
+  - { company: Bolttech,          slug: bolttech }
+  - { company: PatSnap,           slug: patsnap }
+  - { company: Funding Societies, slug: fundingsocieties }
+
+# --- Lever: https://api.lever.co/v0/postings/{slug}?mode=json
+lever:
+  - { company: Palantir,          slug: palantir }
+  - { company: Kraken,            slug: kraken }
+  - { company: Blockchain.com,    slug: blockchain }
+  - { company: Airwallex,         slug: airwallex }
+  - { company: Circles.Life,      slug: circles }
+  - { company: Zenyum,            slug: zenyum }
+  - { company: Carro,             slug: carro }
+  - { company: Endowus,           slug: endowus }
+  - { company: StashAway,         slug: stashaway }
+  - { company: Xendit,            slug: xendit }
+  - { company: Tiger Brokers,     slug: tigerbrokers }
+
+# --- Ashby: https://api.ashbyhq.com/posting-api/job-board/{slug}
+ashby:
+  - { company: OpenAI,            slug: openai }
+  - { company: Notion,            slug: notion }
+  - { company: Vercel,            slug: vercel }
+  - { company: Linear,            slug: linear }
+  - { company: Deel,              slug: deel }
+  - { company: Ramp,              slug: ramp }
+  - { company: Scale AI,          slug: scaleai }
+  - { company: Perplexity,        slug: perplexity }
+  - { company: ElevenLabs,        slug: elevenlabs }
+  - { company: Aspire,            slug: aspire }
+
+# --- SmartRecruiters: https://api.smartrecruiters.com/v1/companies/{slug}/postings
+smartrecruiters:
+  - { company: Visa,              slug: Visa }
+  - { company: Bosch,             slug: BoschGroup }
+  - { company: Square / Block,    slug: Square }
+  - { company: Publicis Groupe,   slug: PublicisGroupe }
+  - { company: Ubisoft,           slug: Ubisoft }
+
+# --- Workday: POST https://{host}/wday/cxs/{tenant}/{site}/jobs
+#     Find these by opening a company's careers site and reading the URL.
+workday:
+  - company: Salesforce
+    host: salesforce.wd12.myworkdayjobs.com
+    tenant: salesforce
+    site: External_Career_Site
+  - company: NVIDIA
+    host: nvidia.wd5.myworkdayjobs.com
+    tenant: nvidia
+    site: NVIDIAExternalCareerSite
+  - company: Adobe
+    host: adobe.wd5.myworkdayjobs.com
+    tenant: adobe
+    site: external_experienced
+  - company: PayPal
+    host: paypal.wd1.myworkdayjobs.com
+    tenant: paypal
+    site: jobs
+  - company: ServiceNow
+    host: servicenow.wd1.myworkdayjobs.com
+    tenant: servicenow
+    site: careers
+  - company: Zoom
+    host: zoomvideocommunications.wd5.myworkdayjobs.com
+    tenant: zoomvideocommunications
+    site: Zoom
+  - company: Workday
+    host: workday.wd5.myworkdayjobs.com
+    tenant: workday
+    site: Workday
+
+# --- MyCareersFuture (Singapore government portal)
+mycareersfuture:
+  enabled: true
+  # One search per line. Kept broad; the title filter and rubric do the narrowing.
+  queries:
+    - finance manager
+    - financial controller
+    - business controller
+    - finance business partner
+    - FP&A manager
+    - senior finance manager
+  # Minimum posted salary in SGD/month to include. 0 = no filter.
+  min_salary_monthly: 9000
+
+# --- Search firms. No stable public API. The agent builds direct search URLs
+#     and drops them into the weekly section of the digest for manual review.
+search_firms:
+  - { name: Robert Walters,      url: "https://www.robertwalters.com.sg/jobs.html?keywords=financial+controller" }
+  - { name: Michael Page,        url: "https://www.michaelpage.com.sg/jobs/finance-accounting" }
+  - { name: Robert Half,         url: "https://www.roberthalf.com/sg/en/jobs/finance-and-accounting" }
+  - { name: Hays,                url: "https://www.hays.com.sg/job-search/accountancy-finance-jobs" }
+  - { name: Kerry Consulting,    url: "https://www.kerryconsulting.com/jobs/?category=finance-accounting" }
+  - { name: Ethos BeathChapman,  url: "https://www.ebcglobal.com/jobs?discipline=finance-accounting" }
+  - { name: Charterhouse,        url: "https://www.charterhouse.com.sg/jobs" }
+  - { name: Argyll Scott,        url: "https://www.argyllscott.com.sg/jobs" }
+  - { name: eFinancialCareers,   url: "https://www.efinancialcareers.sg/jobs-Singapore.s001" }

@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# profile.yaml — PUBLIC repo version: title and location filters only.
+# Nothing personal lives here. The candidate summary, the scoring rubric and the
+# application log stay in the Claude project, where scoring happens.
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# TITLE FILTER — runs before any AI call, keeps cost down.
+# Python regex, case-insensitive.
+# ---------------------------------------------------------------------------
+
+filters:
+  title_include: >-
+    (finance\s+(manager|lead|director|controller|business\s+partner)|
+    financial\s+(controller|planning|control\b)|
+    business\s+controller|
+    fp\s*&\s*a|fpna|
+    (senior|sr\.?|regional|group|assistant|divisional)\s+.{0,20}(controller|finance\s+manager)|
+    commercial\s+finance|
+    revenue\s+(manager|finance|controller|operations\s+manager)|
+    head\s+of\s+(finance|fp\s*&\s*a|financial\s+planning)|
+    controller,|
+    controlling\s+manager|
+    manager,?\s+(finance|financial\s+planning|fp\s*&\s*a|business\s+finance)|
+    business\s+finance\s+(manager|partner|lead)|
+    accounting\s+manager|finance\s*&\s*accounting)
+
+  title_exclude: >-
+    (intern(ship)?|graduate|trainee|apprentice|\banalyst\b|
+    \bjunior\b|\bassociate\b|\bexecutive\b|\bassistant\s+(accountant|manager)\b|
+    accounts?\s+(payable|receivable|assistant|clerk|executive)|
+    \bcredit\s+control(ler)?\s+(executive|assistant)|
+    \bauditor\b|external\s+audit|internal\s+audit|
+    \btax\b|treasury|actuarial|payroll|
+    quality\s+control|document\s+control|production\s+control|
+    software|engineer|developer|scientist|designer|
+    \bsales\b|marketing|recruit)
+
+  location_include: >-
+    (singapore|\bsg\b|\bsgp\b|asia\s*[- ]?\s*pacific|apac|southeast\s+asia|sea\b|remote)
+
+# ---------------------------------------------------------------------------
+# DELIVERY
+# ---------------------------------------------------------------------------
+
+delivery:
+  email_when_empty: true
