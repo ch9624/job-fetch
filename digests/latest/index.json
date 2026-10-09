@@ -1,9 +1,10 @@
 {
- "date": "2026-10-09",
- "count": 7,
- "parts": 1,
+ "date": "2026-10-10",
+ "count": 13,
+ "parts": 2,
  "files": [
-  "part-01.json"
+  "part-01.json",
+  "part-02.json"
  ],
- "source_health": "greenhouse: 22/38 boards, lever: 2/11 boards, ashby: 8/10 boards, smartrecruiters: 5/5 boards, workday: 5/7 boards, mycareersfuture: 107 postings"
+ "source_health": "greenhouse: 22/38 boards, lever: 2/11 boards, ashby: 8/10 boards, smartrecruiters: 5/5 boards, workday: 5/7 boards, mycareersfuture: 110 postings"
 }
